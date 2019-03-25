@@ -1,14 +1,17 @@
 const express = require('express');
 const app = express();
 const members= require('./members');
+// const moment= require('moment')
+const logger = require('./middleware/logger')
 
-
-const logger = (req,res,next)=>{
-    console.log('hello');
-    next();
-
-}
-
+// const logger = (req,res,next)=>{
+//     console.log(
+//       `${req.protocol}://${req.get('host')}${
+//         req.originalUrl
+//       }: ${moment().format()}`
+//     );
+//     next()
+// };
 app.use(logger);
 
 
@@ -21,7 +24,7 @@ app.get('/members',(req,res)=>{
 });
 
 
-app.listen(5000,()=>{
+app.listen(8000,()=>{
     console.log('continue')
 });
 
