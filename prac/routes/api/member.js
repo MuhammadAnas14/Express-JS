@@ -3,11 +3,11 @@ const router = express.Router();
 const members= require('./members');
 
 
-router.get('/members',(req,res)=>{
+router.get('/',(req,res)=>{
   res.json(members);
 
 });
-router.get('/members/:id',(req,res)=>{
+router.get('/:id',(req,res)=>{
   // res.json(members.filter(member => member.id === parseInt(req.params.id)));
   const found = members.some(member => member.id === parseInt(req.params.id));
 
