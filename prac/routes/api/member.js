@@ -1,6 +1,6 @@
 const express= require('express');
 const router = express.Router();
-const members= require('../../members');
+const members= require('../../membersss');
 
 
 router.get('/',(req,res)=>{
@@ -19,23 +19,39 @@ router.get('/:id',(req,res)=>{
     res.status(400).json({msg: 'memvber mnot fpound'});  }
 });
 
-//create members
-router.post('/',(req,res)=>{
-  const newMember= {
+router.post('/', (req, res) => {
+  const newMember = {
     id: members.length +1,
     name: req.body.name,
     email: req.body.email,
-    status : 'jhund'
+    status: 'active'
+  };
+
+  if (!newMember.name || !newMember.email) {
+    return res.status(400).json({ msg: 'Please include a name and email' });
   }
 
-  if(!newMember.name || !newMember.email){
-    return res.status(400).json({ msg : 'name aur email enter karo'});
-
-  }
   members.push(newMember);
   res.json(members);
-
+  // res.redirect('/');
 });
+//create members
+// router.post('/',(req,res)=>{
+//   const newMember= {
+//     id: members.length +1,
+//     name: req.body.name,
+//     email: req.body.email,
+//     status : 'jhund'
+//   }
+
+//   if(!newMember.name || !newMember.email){
+//     return res.status(400).json({ msg : 'name aur email enter karo'});
+
+//   }
+//   members.push(newMember);
+//   res.json(members);
+
+// });
 
 
 module.exports =router;
