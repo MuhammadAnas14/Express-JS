@@ -35,8 +35,8 @@ app.get('/:id',(req,res)=>{
 app.post('/posting',(req,res)=>{
   const newEntry ={
     id : members.length +1,
-    name: "anas",
-    email: "fggfgg@gmail.com",
+    name: req.body.name,
+    email: req.body.email,
     status: 'jhund'
 
   }
@@ -91,3 +91,4 @@ app.listen(8080,()=>{
   console.log('on scen hai');
 });
 
+    
